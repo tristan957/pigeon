@@ -1,0 +1,14 @@
+#pragma once
+
+#include <gtk/gtk.h>
+
+#define PROJECT_NAME	"@project_name@"
+#define PROJECT_VERSION "@project_version@"
+// clang-format off
+#define PROJECT_LICENSE @project_license@
+// clang-format on
+#define PROJECT_WEBSITE		  "@project_website@"
+#define PROJECT_WEBSITE_LABEL "@project_website_label@"
+#define GETTEXT_PACKAGE		  "@gettext_package@"
+#define LOCALEDIR			  "@localedir@"
+#define LIBDIR				  "@libdir@"

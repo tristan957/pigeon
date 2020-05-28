@@ -1,0 +1,6 @@
+data/io.partin.tristan.Pigeon.desktop.in
+data/io.partin.tristan.Pigeon.appdata.xml.in
+data/io.partin.tristan.Pigeon.gschema.xml
+data/ui/pigeon-application-window.ui
+src/main.c
+src/pigeon-application-window.c

@@ -1,0 +1,15 @@
+image: alpine/edge
+packages:
+  - gtk+3.0-dev
+  - meson
+  - curl-dev
+sources:
+  - https://git.sr.ht/~tristan957/pigeon
+tasks:
+  - setup: |
+      cd pigeon
+      CC=gcc meson -Dwerror=true -Dbuildtype=release -Dwarning_level=2 \
+        build
+  - build: |
+      cd pigeon
+      ninja -C build
