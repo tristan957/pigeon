@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<requires lib="gtk" version="3.98" />
+	<template class="PigeonPageTab" parent="GtkBox">
+		<child>
+			<object class="GtkStack" id="label_stack">
+				<property name="transition_type">crossfade</property>
+				<child>
+					<object class="GtkStackPage">
+						<property name="name">readonly</property>
+						<property name="child">
+							<object class="GtkBox">
+								<child>
+									<object class="GtkLabel" id="label">
+										<property name="has_tooltip">True</property>
+										<property name="halign">start</property>
+										<property name="use_markup">True</property>
+									</object>
+								</child>
+							</object>
+						</property>
+					</object>
+				</child>
+				<child>
+					<object class="GtkStackPage">
+						<property name="name">edit</property>
+						<property name="child">
+							<object class="GtkText" id="label_entry"></object>
+						</property>
+					</object>
+				</child>
+			</object>
+		</child>
+		<child>
+			<object class="GtkButton" id="close_button">
+				<property name="icon_name">window-close-symbolic</property>
+				<property name="action_name">win.close-tab</property>
+				<style>
+					<class name="flat" />
+				</style>
+			</object>
+		</child>
+	</template>
+</interface>

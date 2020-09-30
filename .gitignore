@@ -1,2 +1,8 @@
 /build
 /.vscode
+/.clangd
+/subprojects/*
+!/subprojects/gio.wrap
+!/subprojects/gtk.wrap
+!/subprojects/gtksourceview.wrap
+compile_commands.json

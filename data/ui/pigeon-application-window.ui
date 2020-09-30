@@ -1,25 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <requires lib="gtk+" version="3.24"/>
-    <template class="PigeonApplicationWindow" parent="GtkApplicationWindow">
-      <property name="default-width">600</property>
-      <property name="default-height">300</property>
-      <child type="titlebar">
-        <object class="GtkHeaderBar" id="header_bar">
-          <property name="visible">True</property>
-          <property name="show-close-button">True</property>
-          <property name="title">Hello, World!</property>
-        </object>
-      </child>
-      <child>
-        <object class="GtkLabel" id="label">
-          <property name="label">Hello, World!</property>
-          <property name="visible">True</property>
-          <attributes>
-            <attribute name="weight" value="bold"/>
-            <attribute name="scale" value="2"/>
-          </attributes>
-        </object>
-      </child>
-    </template>
-  </interface>
+  <requires lib="gtk" version="3.98" />
+  <menu id="application_menu_model">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Keyboard Shortcuts</attribute>
+        <attribute name="action">win.shortcuts</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">About Pigeon</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Quit Pigeon</attribute>
+        <attribute name="action">app.quit</attribute>
+      </item>
+    </section>
+  </menu>
+  <object class="GtkPopoverMenu" id="application_menu">
+    <property name="menu_model">application_menu_model</property>
+  </object>
+  <template class="PigeonApplicationWindow" parent="GtkApplicationWindow">
+    <property name="default-width">600</property>
+    <property name="default-height">300</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="header_bar">
+        <property name="show-title-buttons">True</property>
+        <child type="start">
+          <object class="GtkButton">
+            <property name="icon_name">list-add-symbolic</property>
+            <signal name="clicked" handler="new_request_cb" object="PigeonApplicationWindow" swapped="no" />
+            <child>
+              <object class="GtkShortcutController">
+                <property name="scope">managed</property>
+                <child>
+                  <object class="GtkShortcut">
+                    <property name="trigger">&lt;Control&gt;t</property>
+                    <property name="action">activate</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child type="end">
+          <object class="GtkMenuButton">
+            <property name="icon_name">open-menu-symbolic</property>
+            <property name="popover">application_menu</property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkNotebook" id="tab_notebook">
+        <property name="scrollable">True</property>
+        <property name="show_tabs">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkShortcutController">
+        <property name="scope">global</property>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">&lt;Control&gt;comma</property>
+            <property name="action">action(app.preferences)</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">&lt;Control&gt;k</property>
+            <property name="action">action(win.shortcuts)</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">&lt;Control&gt;b</property>
+            <property name="action">action(app.about)</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">&lt;Control&gt;q</property>
+            <property name="action">action(app.quit)</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">&lt;Alt&gt;Left</property>
+            <property name="action">action(win.shift-left)</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkShortcut">
+            <property name="trigger">&lt;Alt&gt;Right</property>
+            <property name="action">action(win.shift-right)</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

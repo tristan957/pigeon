@@ -1,6 +1,6 @@
 [wrap-file]
-directory = gtk-3.24.20
+directory = gtk-3.99.0
 
-source_url = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.24.20/gtk-3.24.20.tar.gz
-source_filename = gtk-3.24.20.tar.gz
-source_hash = 54e78a4eb81d38f887701bddddb8755002aa81bfce1a53852286b331fd47b5ff
+source_url = https://gitlab.gnome.org/GNOME/gtk/-/archive/3.99.0/gtk-3.99.0.tar.gz
+source_filename = gtk-3.99.0.tar.gz
+source_hash = e46a28408595517b21c88c71d1856aee7d87d254450ebce848a8daedc7afba4b

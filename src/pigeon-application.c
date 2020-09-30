@@ -4,6 +4,7 @@
 
 #include <curl/curl.h>
 #include <glib-object.h>
+#include <gtksourceview/gtksource.h>
 
 #include "pigeon-application-window.h"
 #include "pigeon-application.h"
@@ -35,8 +36,10 @@ pigeon_application_activate(GApplication *app)
 #endif
 		if (code != CURLE_OK) {
 			g_critical("Unable to initialize libcurl. Try to start the application again.");
-			exit(1);
+			exit(EXIT_FAILURE);
 		}
+
+		gtk_source_init();
 
 		priv->app_window = pigeon_application_window_new(self);
 	}
@@ -54,8 +57,16 @@ pigeon_application_startup(GApplication *app)
 }
 
 static void
-pigeon_application_about(
-	G_GNUC_UNUSED GSimpleAction *action, G_GNUC_UNUSED GVariant *param, gpointer data)
+pigeon_application_shutdown(GApplication *app)
+{
+	curl_global_cleanup();
+	gtk_source_finalize();
+
+	G_APPLICATION_CLASS(pigeon_application_parent_class)->shutdown(app);
+}
+
+static void
+app_about(G_GNUC_UNUSED GSimpleAction *action, G_GNUC_UNUSED GVariant *param, gpointer data)
 {
 	static const char *authors[] = {"Tristan Partin"};
 
@@ -68,12 +79,35 @@ pigeon_application_about(
 		NULL);
 }
 
+static void
+app_preferences(
+	G_GNUC_UNUSED GSimpleAction *action, G_GNUC_UNUSED GVariant *param, G_GNUC_UNUSED gpointer data)
+{
+	g_print("Showing preferences\n");
+}
+
+static void
+app_quit(
+	G_GNUC_UNUSED GSimpleAction *action, G_GNUC_UNUSED GVariant *param, G_GNUC_UNUSED gpointer data)
+{
+	GApplication *app = g_application_get_default();
+	g_application_quit(app);
+}
+
 // clang-format off
 static const GActionEntry app_entries[] = {
 	{
 		.name	  = "about",
-		.activate = pigeon_application_about
+		.activate = app_about
 	},
+	{
+		.name	  = "preferences",
+		.activate = app_preferences
+	},
+	{
+		.name	  = "quit",
+		.activate = app_quit
+	}
 };
 // clang-format on
 
@@ -84,6 +118,7 @@ pigeon_application_class_init(PigeonApplicationClass *klass)
 
 	app_class->activate = pigeon_application_activate;
 	app_class->startup	= pigeon_application_startup;
+	app_class->shutdown = pigeon_application_shutdown;
 }
 
 static void

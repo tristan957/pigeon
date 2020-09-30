@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+	<requires lib="gtk" version="3.98" />
+	<object class="GtkShortcutsWindow" id="shortcuts_window">
+		<property name="modal">True</property>
+		<child>
+			<object class="GtkShortcutsSection">
+				<property name="section-name">shortcuts</property>
+				<child>
+					<object class="GtkShortcutsGroup">
+						<property name="title" translatable="yes">Application</property>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;Control&gt;comma</property>
+								<property name="title" translatable="yes">Open preferences</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;Control&gt;k</property>
+								<property name="title" translatable="yes">Open shortcuts window</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;Control&gt;b</property>
+								<property name="title" translatable="yes">Open about</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;Control&gt;q</property>
+								<property name="title" translatable="yes">Quit application</property>
+							</object>
+						</child>
+					</object>
+				</child>
+				<child>
+					<object class="GtkShortcutsGroup">
+						<property name="title" translatable="yes">Tab Management</property>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="shortcut-type">gesture-two-finger-swipe-right</property>
+								<property name="title" translatable="yes">Switch to the next tab</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="shortcut-type">gesture-two-finger-swipe-left</property>
+								<property name="title" translatable="yes">Switch to the previous tab</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="shortcut-type">gesture-two-finger-swipe-right</property>
+								<property name="title" translatable="yes">Switch to the next tab</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;Alt&gt;leftarrow</property>
+								<property name="title" translatable="yes">Switch to the previous tab</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;Alt&gt;rightarrow</property>
+								<property name="title" translatable="yes">Switch to the next tab</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;Control&gt;t</property>
+								<property name="title" translatable="yes">Create new tab</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;Control&gt;d</property>
+								<property name="title" translatable="yes">Close current tab</property>
+							</object>
+						</child>
+					</object>
+				</child>
+				<child>
+					<object class="GtkShortcutsGroup">
+						<property name="title" translatable="yes">Request Management</property>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;Control&gt;s</property>
+								<property name="title" translatable="yes">Save request</property>
+							</object>
+						</child>
+						<child>
+							<object class="GtkShortcutsShortcut">
+								<property name="accelerator">&lt;Control&gt;&lt;Shift&gt;s</property>
+								<property name="title" translatable="yes">Save request as</property>
+							</object>
+						</child>
+					</object>
+				</child>
+			</object>
+		</child>
+	</object>
+</interface>

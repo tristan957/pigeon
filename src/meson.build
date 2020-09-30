@@ -1,4 +1,5 @@
 config_h = configuration_data({
+  'log_domain': 'Pigeon',
   'project_name': 'Pigeon',
   'project_version': meson.project_version(),
   'project_license': 'GTK_LICENSE_GPL_3_0',
@@ -19,16 +20,21 @@ pigeon_sources = [
   'main.c',
   'pigeon-application.c',
   'pigeon-application-window.c',
+  'pigeon-page.c',
+  'pigeon-page-tab.c',
+  'pigeon-request-explorer.c',
 ]
 
 pigeon_deps = [
   libgio_dep,
   libgtk_dep,
   libcurl_dep,
+  gtksource_dep,
 ]
 
 pigeon_c_args = [
-  '-DG_LOG_DOMAIN="Pigeon"',
+  # Forking g_clear_pointer
+  '-Wno-incompatible-pointer-types',
 ]
 
 if get_option('buildtype') == 'release'
